@@ -25,11 +25,11 @@ const Register = () => {
   };
 
   return (
-    <div className="register">
+    <div className="auth">
       <div className="register-container">
         <div className="register-top">
-          <div className="register-logoContainer">
-            <img className="register-logo" src="/igl-logo.png" alt="logo" />
+          <div className="auth-logoContainer">
+            <img className="auth-logo" src="/igl-logo.png" alt="logo" />
           </div>
 
           <div className="register-message">
@@ -38,7 +38,7 @@ const Register = () => {
 
           <div className="register-form">
             <form onSubmit={onSubmit}>
-              <div className="register-input">
+              <div className="auth-input">
                 <label>Email</label>
                 <input
                   type="email"
@@ -49,7 +49,7 @@ const Register = () => {
                 />
               </div>
 
-              <div className="register-input">
+              <div className="auth-input">
                 <label>Full Name</label>
                 <input
                   type="text"
@@ -59,7 +59,7 @@ const Register = () => {
                 />
               </div>
 
-              <div className="register-input">
+              <div className="auth-input">
                 <label>Username</label>
                 <input
                   type="text"
@@ -69,7 +69,7 @@ const Register = () => {
                 />
               </div>
 
-              <div className="register-input">
+              <div className="auth-input">
                 <label>Password</label>
                 <input
                   type="password"
@@ -80,7 +80,7 @@ const Register = () => {
               </div>
 
               <button
-                className="register-button"
+                className="auth-button"
                 disabled={buttonDisabled()}
                 type="submit"
               >
@@ -89,7 +89,7 @@ const Register = () => {
 
               {/* Display all error messages */}
               {error && (
-                <div className="register-error">
+                <div className="auth-error">
                   {error.map((err, index) => (
                     <h3 key={index}>{err}</h3>
                   ))}
@@ -99,10 +99,10 @@ const Register = () => {
           </div>
         </div>
 
-        <div className="register-bottom">
+        <div className="auth-bottom">
           <p>
             Have an account?
-            <Link to="/accounts/login" className="register-loginLink">
+            <Link to="/accounts/login" className="auth-link">
               Log in
             </Link>
           </p>

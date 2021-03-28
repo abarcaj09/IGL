@@ -19,16 +19,16 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
+    <div className="auth">
       <div className="login-container">
         <div className="login-top">
-          <div className="login-logoContainer">
-            <img className="login-logo" src="/igl-logo.png" alt="logo" />
+          <div className="auth-logoContainer">
+            <img className="auth-logo" src="/igl-logo.png" alt="logo" />
           </div>
 
           <div className="login-form">
             <form onSubmit={onSubmit}>
-              <div className="login-input">
+              <div className="auth-input">
                 <label>Username or email</label>
                 <input
                   type="text"
@@ -39,7 +39,7 @@ const Login = () => {
                 />
               </div>
 
-              <div className="login-input">
+              <div className="auth-input">
                 <label>Password</label>
                 <input
                   type="password"
@@ -50,7 +50,7 @@ const Login = () => {
               </div>
 
               <button
-                className="login-button"
+                className="auth-button"
                 disabled={!account || password.length < 6}
                 type="submit"
               >
@@ -58,7 +58,7 @@ const Login = () => {
               </button>
 
               {error && (
-                <div className="login-error">
+                <div className="auth-error">
                   <h3>{error}</h3>
                 </div>
               )}
@@ -66,10 +66,10 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="login-bottom">
+        <div className="auth-bottom">
           <p>
             Don't have an account?
-            <Link to="/accounts/register" className="login-registerLink">
+            <Link to="/accounts/register" className="auth-link">
               Sign up
             </Link>
           </p>
