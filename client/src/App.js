@@ -10,36 +10,42 @@ import {
   Profile,
   Register,
 } from "./pages";
+import AuthRoute from "./components/AuthRoute";
+import UserRoute from "./components/UserRoute";
 
 const App = () => {
   return (
     <div className="app-body">
       <Router>
         <Switch>
-          <Route exact path="/accounts/register">
-            <Register />
-          </Route>
-          <Route exact path="/accounts/login">
-            <Login />
-          </Route>
-          <Route exact path="/accounts/edit">
+          <AuthRoute exact path="/accounts/register" component={Register} />
+
+          <AuthRoute exact path="/accounts/login" component={Login} />
+
+          <UserRoute exact path="/accounts/edit">
             <EditProfile />
-          </Route>
-          <Route exact path="/explore">
+          </UserRoute>
+
+          <UserRoute exact path="/explore">
             <Explore />
-          </Route>
-          <Route exact path="/create">
+          </UserRoute>
+
+          <UserRoute exact path="/create">
             <Create />
-          </Route>
+          </UserRoute>
+
+          {/* User doesn't have to be logged in to view a post if they have the :id*/}
           <Route exact path="/p/:id">
             <Post />
           </Route>
-          <Route exact path="/:username">
+
+          <UserRoute exact path="/:username">
             <Profile />
-          </Route>
-          <Route exact path="/">
+          </UserRoute>
+
+          <UserRoute exact path="/">
             <Home />
-          </Route>
+          </UserRoute>
         </Switch>
       </Router>
     </div>
