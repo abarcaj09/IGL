@@ -15,16 +15,16 @@ const Header = () => {
   const user = { username: "sample", name: "sam", profilePic: "" };
 
   return (
-    <div className="Header">
-      <div className="Header-container">
-        <div className="Header-logoContainer">
+    <div className="header">
+      <div className="header-container">
+        <div className="header-logoContainer">
           <Link to="/">
-            <img className="Header-logo" src="/igl-logo.png" alt="logo" />
+            <img className="header-logo" src="/igl-logo.png" alt="logo" />
           </Link>
         </div>
 
-        <div className="Header-searchContainer">
-          <div className="Header-search">
+        <div className="header-searchContainer">
+          <div className="header-search">
             <SearchIcon />
             <input
               type="text"
@@ -35,29 +35,37 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="Header-iconsContainer">
-          <div className="Header-icons">
-            <Link to="/" className="Header-icon">
-              <HomeIcon
-                className={` ${location.pathname === "/" && "active"}`}
-              />
+        <div className="header-iconsContainer">
+          <div className="header-icons">
+            <Link
+              to="/"
+              className={`header-icon ${location.pathname === "/" && "active"}`}
+            >
+              <HomeIcon />
             </Link>
 
-            <Link to="/explore" className="Header-icon">
-              <ExploreIcon
-                className={` ${location.pathname === "/explore" && "active"}`}
-              />
+            <Link
+              to="/explore"
+              className={`header-icon ${
+                location.pathname === "/explore" && "active"
+              }`}
+            >
+              <ExploreIcon />
             </Link>
 
-            <Link to="/create" className="Header-icon">
-              <AddAPhotoIcon
-                className={` ${location.pathname === "/create" && "active"}`}
-              />
+            <Link
+              to="/create"
+              className={`header-icon ${
+                location.pathname === "/create" && "active"
+              }`}
+            >
+              <AddAPhotoIcon />
             </Link>
 
             <Avatar
               className={` ${
                 location.pathname.split("/")[1] === user.username &&
+                user.username.length > 0 &&
                 "activeAvatar"
               }`}
               src={user.profilePic}
