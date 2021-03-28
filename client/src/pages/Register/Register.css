@@ -81,6 +81,21 @@
   font-size: 14px;
 }
 
+.register-button {
+  width: 100%;
+  background-color: #007aff;
+  color: #ffff;
+  height: 30px;
+}
+
+.register-button:hover:enabled {
+  cursor: pointer;
+}
+
+.register-button:disabled {
+  opacity: 0.6;
+}
+
 .register-bottom {
   margin-top: 20px;
   background-color: #ffff;
@@ -90,10 +105,11 @@
   align-items: center;
   border: 1px solid #d3d3d3;
 }
-.register-logInLink {
+
+.register-loginLink {
   text-decoration: none;
   font-weight: 600;
-  color: rgb(0, 162, 255);
+  color: #007aff;
   padding-left: 10px;
 }
 

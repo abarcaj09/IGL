@@ -13,7 +13,7 @@ import {
 
 const App = () => {
   return (
-    <div>
+    <div className="app-body">
       <Router>
         <Switch>
           <Route exact path="/accounts/register">
