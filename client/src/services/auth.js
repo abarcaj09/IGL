@@ -11,4 +11,4 @@ const register = async (userInfo) => {
   }
 };
 
-export default { register, login };
+export default { register };
