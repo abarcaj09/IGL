@@ -12,6 +12,7 @@ import {
 } from "./pages";
 import AuthRoute from "./components/AuthRoute";
 import UserRoute from "./components/UserRoute";
+import Header from "./components/Header";
 
 const App = () => {
   return (
@@ -23,27 +24,33 @@ const App = () => {
           <AuthRoute exact path="/accounts/login" component={Login} />
 
           <UserRoute exact path="/accounts/edit">
+            <Header />
             <EditProfile />
           </UserRoute>
 
           <UserRoute exact path="/explore">
+            <Header />
             <Explore />
           </UserRoute>
 
           <UserRoute exact path="/create">
+            <Header />
             <Create />
           </UserRoute>
 
           {/* User doesn't have to be logged in to view a post if they have the :id*/}
           <Route exact path="/p/:id">
+            <Header />
             <Post />
           </Route>
 
           <UserRoute exact path="/:username">
+            <Header />
             <Profile />
           </UserRoute>
 
           <UserRoute exact path="/">
+            <Header />
             <Home />
           </UserRoute>
         </Switch>
