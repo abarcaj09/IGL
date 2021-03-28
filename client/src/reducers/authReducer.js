@@ -4,7 +4,8 @@ import jwt_decode from "jwt-decode";
 
 const initialState = {
   user: null, // object contains username and jwt
-  error: null,
+  loginError: "",
+  registerError: null,
   config: null, // contains Authorization header with jwt
 };
 
@@ -31,14 +32,17 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
-        error: null,
+        loginError: "",
+        registerError: null,
         config: getConfig(action.payload.token),
       };
     case "LOGOUT":
       localStorage.removeItem("userJWT");
       return action.payload;
-    case "ERROR":
-      return { ...state, error: action.payload };
+    case "LOGIN_ERROR":
+      return { ...state, loginError: action.payload };
+    case "REGISTER_ERROR":
+      return { ...state, registerError: action.payload };
     default:
       return state;
   }
@@ -50,7 +54,7 @@ export const register = (userInfo) => {
 
     if (registeredUser.error) {
       return dispatch({
-        type: "ERROR",
+        type: "REGISTER_ERROR",
         payload: registeredUser.error,
       });
     }
@@ -68,7 +72,7 @@ export const login = (userCredentials) => {
 
     if (authUser.error) {
       return dispatch({
-        type: "ERROR",
+        type: "LOGIN_ERROR",
         payload: authUser.error,
       });
     }
@@ -83,7 +87,7 @@ export const login = (userCredentials) => {
 export const logout = () => {
   return {
     type: "LOGOUT",
-    payload: { user: null, error: null, config: null },
+    payload: { user: null, loginError: "", registerError: null, config: null },
   };
 };
 

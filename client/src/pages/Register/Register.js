@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 const Register = () => {
   const dispatch = useDispatch();
   const error = useSelector(({ auth }) => {
-    return auth.error;
+    return auth.registerError;
   });
 
   const [name, setName] = useState("");

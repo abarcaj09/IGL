@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 const Login = () => {
   const dispatch = useDispatch();
   const error = useSelector(({ auth }) => {
-    return auth.error;
+    return auth.loginError;
   });
 
   const [account, setAccount] = useState("");
