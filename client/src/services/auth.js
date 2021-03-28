@@ -11,4 +11,13 @@ const register = async (userInfo) => {
   }
 };
 
-export default { register };
+const login = async (userCredentials) => {
+  try {
+    const response = await axios.post(`${baseUrl}/login`, userCredentials);
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
+export default { register, login };
