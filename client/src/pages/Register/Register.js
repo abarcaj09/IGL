@@ -1,8 +1,15 @@
 import "./Register.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { register } from "../../reducers/authReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 const Register = () => {
+  const dispatch = useDispatch();
+  const error = useSelector(({ auth }) => {
+    return auth.error;
+  });
+
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -14,9 +21,7 @@ const Register = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(
-      `Submitting: name=${name}, username=${username}, email=${email}, password=${password}`
-    );
+    dispatch(register({ email, name, username, password }));
   };
 
   return (
@@ -81,6 +86,15 @@ const Register = () => {
               >
                 Sign Up
               </button>
+
+              {/* Display all error messages */}
+              {error && (
+                <div className="register-error">
+                  {error.map((err, index) => (
+                    <h3 key={index}>{err}</h3>
+                  ))}
+                </div>
+              )}
             </form>
           </div>
         </div>
