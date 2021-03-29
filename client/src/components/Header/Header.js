@@ -1,18 +1,47 @@
 import "./Header.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from "@material-ui/icons/Home";
 import ExploreIcon from "@material-ui/icons/Explore";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 import { Avatar } from "@material-ui/core";
+import OutsideClickHandler from "react-outside-click-handler";
+import { useSelector } from "react-redux";
+import searchService from "../../services/search";
+import SearchResult from "./SearchResult";
+import useDebounce from "./useDebounce";
 
 const Header = () => {
   const location = useLocation();
-  const [searchInput, setSearchInput] = useState("");
+  const user = useSelector(({ user }) => {
+    return user;
+  });
 
-  //   temp will be replaced by user in redux store
-  const user = { username: "sample", name: "sam", profilePic: "" };
+  const [searchInput, setSearchInput] = useState("");
+  const [showResults, setShowResults] = useState(false);
+  const [results, setResults] = useState([]);
+  const debouncedSearchInput = useDebounce(searchInput, 500);
+
+  useEffect(() => {
+    const getResults = async () => {
+      if (debouncedSearchInput) {
+        const results = await searchService.searchUsers(debouncedSearchInput);
+        setResults(results);
+        setShowResults(true);
+      } else {
+        setResults([]);
+        setShowResults(false);
+      }
+    };
+    getResults();
+  }, [debouncedSearchInput]);
+
+  useEffect(() => {
+    setSearchInput("");
+    setShowResults(false);
+    setResults([]);
+  }, [location.pathname]);
 
   return (
     <div className="header">
@@ -33,6 +62,29 @@ const Header = () => {
               onChange={(e) => setSearchInput(e.target.value)}
             />
           </div>
+
+          {showResults && (
+            <OutsideClickHandler onOutsideClick={() => setShowResults(false)}>
+              <div className="header-searchResults">
+                {results.length > 0 ? (
+                  results.map((result) => {
+                    return (
+                      <SearchResult
+                        key={result.id}
+                        username={result.username}
+                        profilePic={result.profilePic}
+                        name={result.name}
+                      />
+                    );
+                  })
+                ) : (
+                  <div className="header-noResults">
+                    <p>No results found.</p>
+                  </div>
+                )}
+              </div>
+            </OutsideClickHandler>
+          )}
         </div>
 
         <div className="header-iconsContainer">
