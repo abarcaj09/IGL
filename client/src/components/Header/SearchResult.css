@@ -1,0 +1,25 @@
+.searchResult {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.searchResult:hover {
+  background-color: #efeff4;
+}
+
+.searchResult > .MuiAvatar-root {
+  margin-right: 15px;
+  height: 50px;
+  width: 50px;
+}
+
+.searchResult-text > h4 {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.searchResult-text > p {
+  font-weight: 500;
+  color: rgb(139, 131, 131);
+}
