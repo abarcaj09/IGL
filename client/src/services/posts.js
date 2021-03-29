@@ -11,7 +11,7 @@ const uploadImages = async (images, config) => {
   }
 };
 
-const create = async (imageUrls, caption, config) => {
+const newPost = async (imageUrls, caption, config) => {
   try {
     const postContent = { imageUrls, caption };
     const response = await axios.post(`${baseUrl}/`, postContent, config);
@@ -23,5 +23,5 @@ const create = async (imageUrls, caption, config) => {
 
 export default {
   uploadImages,
-  create,
+  newPost,
 };
