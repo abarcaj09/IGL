@@ -60,7 +60,7 @@ export const setUser = (username, config) => {
 
     dispatch({
       type: "SET_USER",
-      payload: userAccount,
+      payload: userAccount.profile,
     });
   };
 };
