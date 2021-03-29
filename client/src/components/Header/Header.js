@@ -5,14 +5,20 @@ import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from "@material-ui/icons/Home";
 import ExploreIcon from "@material-ui/icons/Explore";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
+import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
+import BookmarkBorderOutlinedIcon from "@material-ui/icons/BookmarkBorderOutlined";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import { Avatar } from "@material-ui/core";
 import OutsideClickHandler from "react-outside-click-handler";
-import { useSelector } from "react-redux";
+
+import { useDispatch, useSelector } from "react-redux";
 import searchService from "../../services/search";
 import SearchResult from "./SearchResult";
 import useDebounce from "./useDebounce";
+import { logout } from "../../reducers/authReducer";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const location = useLocation();
   const user = useSelector(({ user }) => {
     return user;
@@ -21,6 +27,8 @@ const Header = () => {
   const [searchInput, setSearchInput] = useState("");
   const [showResults, setShowResults] = useState(false);
   const [results, setResults] = useState([]);
+  const [isOpen, setIsOpen] = useState(false); // for drop down menu
+
   const debouncedSearchInput = useDebounce(searchInput, 500);
 
   useEffect(() => {
@@ -122,7 +130,45 @@ const Header = () => {
               }`}
               src={user.profilePic}
               alt={user.name}
+              onClick={() => setIsOpen(true)}
             />
+
+            {isOpen && (
+              <OutsideClickHandler
+                onOutsideClick={() => setIsOpen(false)}
+                display="contents"
+              >
+                <div
+                  className="header-dropDownMenu"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  <Link to={`/${user.username}`}>
+                    <div className="header-dropDownItem">
+                      <AccountCircleOutlinedIcon />
+                      <h4>Profile</h4>
+                    </div>
+                  </Link>
+
+                  <Link to={`/${user.username}/saved`}>
+                    <div className="header-dropDownItem">
+                      <BookmarkBorderOutlinedIcon />
+                      <h4>Saved</h4>
+                    </div>
+                  </Link>
+
+                  <Link to="/accounts/edit">
+                    <div className="header-dropDownItem">
+                      <EditOutlinedIcon />
+                      <h4>Edit</h4>
+                    </div>
+                  </Link>
+
+                  <hr />
+
+                  <h4 onClick={() => dispatch(logout)}>Log Out</h4>
+                </div>
+              </OutsideClickHandler>
+            )}
           </div>
         </div>
       </div>
