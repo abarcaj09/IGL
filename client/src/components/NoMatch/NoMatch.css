@@ -1,0 +1,14 @@
+.noMatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.noMatch > h2 {
+  margin-bottom: 30px;
+}
+
+.noMatch > p > a {
+  color: #007aff;
+}

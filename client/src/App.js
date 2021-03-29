@@ -15,6 +15,7 @@ import {
 import AuthRoute from "./components/AuthRoute";
 import UserRoute from "./components/UserRoute";
 import Header from "./components/Header";
+import NoMatch from "./components/NoMatch";
 import { setUser } from "./reducers/userReducer";
 
 const App = () => {
@@ -72,6 +73,11 @@ const App = () => {
             <Header />
             <Home />
           </UserRoute>
+
+          <Route>
+            <Header />
+            <NoMatch />
+          </Route>
         </Switch>
       </Router>
     </div>
