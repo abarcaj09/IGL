@@ -165,7 +165,7 @@ const Header = () => {
 
                   <hr />
 
-                  <h4 onClick={() => dispatch(logout)}>Log Out</h4>
+                  <h4 onClick={() => dispatch(logout())}>Log Out</h4>
                 </div>
               </OutsideClickHandler>
             )}

@@ -99,3 +99,38 @@
 .activeAvatar {
   border: 2px solid rgb(255, 0, 200);
 }
+
+.header-dropDownMenu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 0;
+  top: 50px;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  height: 160px;
+  max-width: 230px;
+  width: 100%;
+  background-color: #ffff;
+}
+
+.header-dropDownMenu > h4 {
+  padding: 8px 10px;
+  cursor: pointer;
+  height: 100%;
+}
+
+.header-dropDownMenu > h4:hover,
+.header-dropDownMenu > a:hover {
+  background-color: #efeff4;
+}
+
+.header-dropDownItem {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.header-dropDownItem > .MuiSvgIcon-root {
+  padding: 8px 10px;
+}

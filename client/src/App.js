@@ -63,6 +63,11 @@ const App = () => {
             <Profile />
           </UserRoute>
 
+          <UserRoute exact path="/:username/saved">
+            <Header />
+            <Profile />
+          </UserRoute>
+
           <UserRoute exact path="/">
             <Header />
             <Home />
