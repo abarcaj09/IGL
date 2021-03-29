@@ -46,6 +46,26 @@
   border-radius: 100px;
 }
 
+.header-searchResults {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  max-height: 360px;
+  width: inherit;
+  background-color: #ffff;
+  overflow-y: auto;
+}
+
+.header-noResults {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+
 .header-search > input {
   border: none;
   padding: 4px;
