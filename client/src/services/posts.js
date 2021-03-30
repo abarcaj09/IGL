@@ -21,7 +21,27 @@ const newPost = async (imageUrls, caption, config) => {
   }
 };
 
+const getPost = async (id) => {
+  try {
+    const response = await axios.get(`${baseUrl}/${id}`);
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
+const getUserPreviews = async (username) => {
+  try {
+    const response = await axios.get(`${baseUrl}/${username}/previews`);
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
 export default {
   uploadImages,
   newPost,
+  getPost,
+  getUserPreviews,
 };
