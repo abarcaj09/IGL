@@ -14,7 +14,7 @@ const initialState = {
   // the user's like, saved, and created posts
   userLikes: [],
   userSaved: [],
-  userPosts: [],
+  userCreatedPosts: [],
 };
 
 // setLikes, setSaved, deletePost
