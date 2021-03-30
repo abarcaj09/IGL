@@ -7,14 +7,14 @@ const initialState = {
 
   postToView: null, // when url = /p/:id => a single post
 
-  userPosts: [], // when url = /p/:id => previews of posts from the user who created postToView
-  userPostsLoaded: false,
-  userPostsError: "",
+  userPreviews: [], // when url = /p/:id => previews of posts from the user who created postToView
+  userPreviewsLoaded: false,
+  userPreviewsError: "",
 
   // the user's like, saved, and created posts
   userLikes: [],
   userSaved: [],
-  userCreatedPosts: [],
+  userPosts: [],
 };
 
 // setLikes, setSaved, deletePost
@@ -43,6 +43,22 @@ const postsReducer = (state = initialState, action) => {
       return { ...state, error: action.payload };
     case "LOGOUT":
       return initialState;
+    case "INIT_POST_TO_VIEW":
+      return { ...state, postToView: action.payload };
+    case "INIT_USER_PREVIEWS":
+      return {
+        ...state,
+        userPreviews: action.payload,
+        userPreviewsLoaded: true,
+        userPreviewsError: "",
+      };
+    case "INIT_USER_PREVIEWS_ERROR":
+      return {
+        ...state,
+        userPreviewsError: action.payload,
+        userPreviews: [],
+        userPreviewsLoaded: true,
+      };
     default:
       return state;
   }
@@ -83,6 +99,35 @@ export const clearPostError = () => {
   return {
     type: "CLEAR_POST_ERROR",
     payload: "",
+  };
+};
+
+export const initPost = (id) => {
+  return async (dispatch) => {
+    const postToView = await postsService.getPost(id);
+
+    dispatch({
+      type: "INIT_POST_TO_VIEW",
+      payload: postToView.post,
+    });
+  };
+};
+
+export const initUserPreviews = (username) => {
+  return async (dispatch) => {
+    const posts = await postsService.getUserPreviews(username);
+
+    if (posts.error) {
+      return dispatch({
+        type: "INIT_USER_PREVIEWS_ERROR",
+        payload: posts.error,
+      });
+    }
+
+    dispatch({
+      type: "INIT_USER_PREVIEWS",
+      payload: posts.previews,
+    });
   };
 };
 
