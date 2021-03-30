@@ -1,0 +1,60 @@
+.slides {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #d3d3d3;
+  position: relative;
+}
+
+.slides-arrow {
+  position: absolute;
+  top: 50%;
+  background-color: #ffff;
+  border: 1px solid #ffff;
+  border-radius: 50%;
+  opacity: 0.7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  width: 25px;
+  z-index: 10;
+}
+
+.slides-arrow:hover {
+  cursor: pointer;
+}
+
+.slides-arrow > .MuiSvgIcon-root {
+  font-size: 30px;
+}
+
+.arrow-left {
+  left: 3%;
+}
+
+.arrow-right {
+  right: 3%;
+}
+
+.slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 700ms ease-in 0ms;
+}
+
+.slide > img {
+  object-fit: cover;
+  width: 100%;
+  max-height: 100%;
+}
+
+.active {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition-delay: 0ms;
+}
