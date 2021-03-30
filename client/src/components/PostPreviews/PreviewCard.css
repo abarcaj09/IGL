@@ -1,0 +1,44 @@
+.previewCard {
+  position: relative;
+  margin: 10px;
+  height: 290px;
+  width: 290px;
+  box-shadow: 5px 5px 15px 5px #606060;
+}
+
+.previewCard:hover > .previewCard-statsContainer {
+  display: flex;
+  justify-content: space-evenly;
+  position: absolute;
+  width: 100%;
+  top: 40%;
+}
+
+.previewCard-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+/* Reduce image opacity when hovered on */
+.previewCard:hover > a {
+  opacity: 0.6;
+}
+
+.previewCard-statsContainer {
+  display: none;
+}
+
+.previewCard-stats {
+  display: flex;
+}
+
+.previewCard-stats > h3 {
+  margin-left: 8px;
+}
+
+.previewCard-photoIcon {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
