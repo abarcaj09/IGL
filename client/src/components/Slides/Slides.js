@@ -32,10 +32,10 @@ const Slides = ({ photos }) => {
       {photos.map((photo, index) => {
         return (
           <div
-            className={index === current ? "active slide" : "slide"}
+            className={index === current ? "activeSlide slide" : "slide"}
             key={index}
           >
-            {index === current && <img src={photo} alt="slide image" />}
+            {index === current && <img src={photo} alt="slide" />}
           </div>
         );
       })}
