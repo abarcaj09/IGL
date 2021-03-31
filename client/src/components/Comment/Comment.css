@@ -1,0 +1,58 @@
+.comment {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.comment:hover {
+  background-color: #efeff4;
+}
+
+.comment-left {
+  display: flex;
+}
+
+.comment-left > a {
+  margin-right: 8px;
+}
+
+.comment-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-text {
+  display: flex;
+  align-items: center;
+}
+
+.comment-text > h3 {
+  margin-right: 8px;
+  align-self: flex-start;
+}
+.comment-text > h3:hover {
+  text-decoration: underline;
+}
+
+.comment-timestamp {
+  display: flex;
+  color: #808080;
+  font-weight: 600;
+}
+
+.comment-timestamp > p {
+  margin-right: 20px;
+}
+
+.comment-delete {
+  display: flex;
+  align-items: center;
+}
+
+.comment-delete:hover {
+  cursor: pointer;
+}
+
+.comment-delete > .MuiSvgIcon-root {
+  color: #ff0000;
+}
