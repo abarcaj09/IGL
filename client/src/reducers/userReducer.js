@@ -42,6 +42,17 @@ const userReducer = (state = initialState, action) => {
       };
     case "SET_USER_ERROR":
       return { ...state, error: action.payload };
+    case "LOGOUT":
+      return initialState;
+    case "FOLLOW_USER":
+      return { ...state, following: action.payload };
+    case "FOLLOW_USER_ERROR":
+      return state;
+    case "EDIT_PROFILE_TO_VIEW":
+      return {
+        ...state,
+        profileToView: { ...state.profileToView, following: action.payload },
+      };
     default:
       return state;
   }
@@ -61,6 +72,35 @@ export const setUser = (username, config) => {
     dispatch({
       type: "SET_USER",
       payload: userAccount.profile,
+    });
+  };
+};
+
+export const followUser = (username, config) => {
+  return async (dispatch) => {
+    const self = await usersService.followUser(username, config);
+
+    if (self.error) {
+      return dispatch({
+        type: "FOLLOW_USER_ERROR",
+        payload: null,
+      });
+    }
+
+    dispatch({
+      type: "FOLLOW_USER",
+      payload: self.following,
+    });
+  };
+};
+
+// modify profileToView when it is the user's own profile and
+// they follow or unfollow users from the profile page
+export const editProfileToView = (newFollowing) => {
+  return (dispatch) => {
+    dispatch({
+      type: "EDIT_PROFILE_TO_VIEW",
+      payload: newFollowing,
     });
   };
 };
