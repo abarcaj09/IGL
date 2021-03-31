@@ -1,0 +1,45 @@
+.socialDisplay {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 400px;
+  overflow-y: auto;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  background-color: #ffff;
+  position: relative;
+}
+
+.socialDisplay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+  padding: 12px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #d3d3d3;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #ffff;
+}
+
+.socialDisplay-header > h1 {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.socialDisplay-header > button {
+  font-size: 24px;
+  border: 0;
+  background-color: #ffff;
+  font-weight: 300;
+}
+
+.socialDisplay-header > button:hover {
+  cursor: pointer;
+}
+
+.socialDisplay-body {
+  padding: 0px 12px;
+}
