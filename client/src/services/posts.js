@@ -39,9 +39,19 @@ const getUserPreviews = async (username) => {
   }
 };
 
+const deletePost = async (id, config) => {
+  try {
+    const response = await axios.delete(`${baseUrl}/${id}`, config);
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
 export default {
   uploadImages,
   newPost,
   getPost,
   getUserPreviews,
+  deletePost,
 };
