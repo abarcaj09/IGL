@@ -63,6 +63,14 @@ const postsReducer = (state = initialState, action) => {
       return { ...state, userSaved: action.payload };
     case "REMOVE_CREATED_POST":
       return { ...state, post: null, userSaved: action.payload };
+    case "LIKE_POST":
+      return { ...state, userLikes: action.payload };
+    case "LIKE_POST_ERROR":
+      return state;
+    case "SAVE_POST":
+      return { ...state, userSaved: action.payload };
+    case "SAVE_POST_ERROR":
+      return state;
     default:
       return state;
   }
@@ -151,6 +159,42 @@ export const removeCreatedPost = (newUserSaved) => {
     dispatch({
       type: "REMOVE_CREATED_POST",
       payload: newUserSaved,
+    });
+  };
+};
+
+export const likePost = (id, config) => {
+  return async (dispatch) => {
+    const self = await postsService.likePost(id, config);
+
+    if (self.error) {
+      return dispatch({
+        type: "LIKE_POST_ERROR",
+        payload: null,
+      });
+    }
+
+    dispatch({
+      type: "LIKE_POST",
+      payload: self.userLikes,
+    });
+  };
+};
+
+export const savePost = (id, config) => {
+  return async (dispatch) => {
+    const self = await postsService.savePost(id, config);
+
+    if (self.error) {
+      return dispatch({
+        type: "SAVE_POST_ERROR",
+        payload: null,
+      });
+    }
+
+    dispatch({
+      type: "SAVE_POST",
+      payload: self.userSaved,
     });
   };
 };
