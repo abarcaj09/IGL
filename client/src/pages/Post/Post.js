@@ -62,7 +62,6 @@ const Post = () => {
                     posts={userPreviews.filter((post) => {
                       return post.id !== postId;
                     })}
-                    fallbackText={"No more posts from this user."}
                   />
                 </div>
               )}
