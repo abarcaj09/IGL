@@ -1,0 +1,54 @@
+.profileRow {
+  display: flex;
+  width: 100%;
+  max-height: 80px;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.profileRow-left {
+  display: flex;
+  align-items: center;
+}
+
+.profileRow-left > a > .MuiAvatar-root {
+  height: 55px;
+  width: 55px;
+}
+
+.profileRow-left--large > a > .MuiAvatar-root {
+  height: 70px;
+  width: 70px;
+}
+
+.profileRow-names {
+  margin-left: 10px;
+}
+
+.profileRow-names > h3 {
+  font-weight: 500;
+}
+
+.profileRow-names > h3:hover {
+  text-decoration: underline;
+}
+
+.profileRow-names > p {
+  font-weight: 300;
+  margin-top: 5px;
+  color: rgb(85, 83, 83);
+}
+
+.profileRow-right > button {
+  width: 75px;
+  height: 40px;
+  border-radius: 4px;
+  color: #ffff;
+  background-color: #007aff;
+}
+
+.profileRow-right > button:hover {
+  cursor: pointer;
+}
