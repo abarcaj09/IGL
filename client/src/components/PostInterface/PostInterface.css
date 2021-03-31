@@ -1,0 +1,21 @@
+.postInterface {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+}
+
+.postInterface .MuiSvgIcon-root {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.postInterface-left > .MuiSvgIcon-root {
+  margin-right: 10px;
+}
+
+.postInterface-liked {
+  color: #ff0000;
+}
