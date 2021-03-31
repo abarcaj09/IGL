@@ -1,13 +1,13 @@
 import "./PagePost.css";
 import React, { useState, useEffect } from "react";
-import Slides from "../../components/Slides";
-import SocialInfo from "../../components/SocialInfo";
-import Comment from "../../components/Comment";
-import AddComment from "../../components/AddComment";
-import PostOptions from "../../components/PostOptions";
-import PostHeader from "../../components/PostHeader";
-import PostInterface from "../../components/PostInterface";
 import { formatDistanceStrict } from "date-fns";
+import Slides from "../../components/Slides";
+import PostHeader from "../../components/PostHeader";
+import PostOptions from "../../components/PostOptions";
+import Comment from "../../components/Comment";
+import PostInterface from "../../components/PostInterface";
+import SocialInfo from "../../components/SocialInfo";
+import AddComment from "../../components/AddComment";
 
 const PostView = ({
   caption,
