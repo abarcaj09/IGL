@@ -1,10 +1,75 @@
 import "./Post.css";
-import React from "react";
+import React, { useEffect } from "react";
+// import PostView from "./PostView";  // uncomment when implemented
+import PostPreviews from "../../components/PostPreviews";
+import { Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import NoMatch from "../../components/NoMatch";
+import { initPost, initUserPreviews } from "../../reducers/postsReducer";
 
 const Post = () => {
+  const location = useLocation();
+  const postId = location.pathname.split("/")[2];
+  const dispatch = useDispatch();
+
+  const {
+    postToView,
+    userPreviews,
+    userPreviewsLoaded,
+    userPreviewsError,
+  } = useSelector(({ posts }) => {
+    return posts;
+  });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    dispatch(initPost(postId));
+  }, [location.pathname, dispatch, postId]);
+
+  useEffect(() => {
+    if (postToView && !postToView.error) {
+      dispatch(initUserPreviews(postToView.user.username));
+    }
+  }, [postToView, dispatch]);
+
+  if (postToView && postToView.error) {
+    return <NoMatch />;
+  }
+
   return (
-    <div className="post">
-      <h1>Post Page</h1>
+    <div>
+      {postToView && postToView.id === postId ? ( // if postToView.id !== postId then don't render yet because it is the previous postToView
+        <div className="post">
+          {/* uncomment  when implemented */}
+          {/* <PostView {...postToView} /> */}
+          <h1>Post will go here</h1>
+
+          {/* if post creator has more post besides this one  (user.posts.length > 1) then render this */}
+          {userPreviewsLoaded && userPreviewsError ? (
+            <p>Failed loading more posts from this user.</p>
+          ) : (
+            <div>
+              {userPreviewsLoaded && userPreviews.length > 1 && (
+                <div className="post-userPreviews">
+                  <p>
+                    More from{" "}
+                    <Link to={`/${postToView.user.username}`}>
+                      {postToView.user.username}
+                    </Link>
+                  </p>
+
+                  <PostPreviews
+                    posts={userPreviews.filter((post) => {
+                      return post.id !== postId;
+                    })}
+                    fallbackText={"No more posts from this user."}
+                  />
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      ) : null}
     </div>
   );
 };

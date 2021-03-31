@@ -6,7 +6,7 @@ const PostPreviews = ({ posts, fallbackText }) => {
   return (
     <div className="postPreviews">
       {posts && posts.length > 0 ? (
-        posts.map((post) => <PostPreviewCard key={post.id} {...post} />)
+        posts.map((post) => <PreviewCard key={post.id} {...post} />)
       ) : (
         <p>{fallbackText}</p>
       )}
