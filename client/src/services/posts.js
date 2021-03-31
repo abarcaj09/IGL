@@ -48,10 +48,30 @@ const deletePost = async (id, config) => {
   }
 };
 
+const likePost = async (id, config) => {
+  try {
+    const response = await axios.post(`${baseUrl}/${id}/likes`, {}, config);
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
+const savePost = async (id, config) => {
+  try {
+    const response = await axios.post(`${baseUrl}/${id}/save`, {}, config);
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
 export default {
   uploadImages,
   newPost,
   getPost,
   getUserPreviews,
   deletePost,
+  likePost,
+  savePost,
 };
