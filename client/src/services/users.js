@@ -11,6 +11,21 @@ const getUser = async (username, config) => {
   }
 };
 
+const followUser = async (username, config) => {
+  try {
+    const response = await axios.post(
+      `${baseUrl}/${username}/follow`,
+      {},
+      config
+    );
+
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
 export default {
   getUser,
+  followUser,
 };
