@@ -59,6 +59,10 @@ const postsReducer = (state = initialState, action) => {
         userPreviews: [],
         userPreviewsLoaded: true,
       };
+    case "REMOVE_POST":
+      return { ...state, userSaved: action.payload };
+    case "REMOVE_CREATED_POST":
+      return { ...state, post: null, userSaved: action.payload };
     default:
       return state;
   }
@@ -127,6 +131,26 @@ export const initUserPreviews = (username) => {
     dispatch({
       type: "INIT_USER_PREVIEWS",
       payload: posts.previews,
+    });
+  };
+};
+
+export const removePost = (id, config, newUserSaved) => {
+  return async (dispatch) => {
+    await postsService.deletePost(id, config);
+
+    dispatch({
+      type: "REMOVE_POST",
+      payload: newUserSaved,
+    });
+  };
+};
+
+export const removeCreatedPost = (newUserSaved) => {
+  return (dispatch) => {
+    dispatch({
+      type: "REMOVE_CREATED_POST",
+      payload: newUserSaved,
     });
   };
 };
