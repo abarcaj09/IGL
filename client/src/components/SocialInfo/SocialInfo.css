@@ -1,0 +1,11 @@
+.socialInfo:hover {
+  cursor: pointer;
+}
+
+.socialInfo > p > span {
+  font-weight: bold;
+}
+
+.inactive:hover {
+  cursor: default;
+}
