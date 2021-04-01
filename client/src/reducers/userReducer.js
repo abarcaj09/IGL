@@ -79,6 +79,8 @@ const userReducer = (state = initialState, action) => {
         suggestionsError: action.payload,
         suggestionsLoaded: true,
       };
+    case "PROFILE_TO_VIEW":
+      return { ...state, profileToView: action.payload };
     default:
       return state;
   }
@@ -163,6 +165,17 @@ export const initSuggestions = (username, config) => {
     dispatch({
       type: "SUGGESTIONS",
       payload: profiles.suggestions,
+    });
+  };
+};
+
+export const initProfile = (username, config) => {
+  return async (dispatch) => {
+    const userProfile = await usersService.getUser(username, config);
+
+    dispatch({
+      type: "ProfileToView",
+      payload: userProfile,
     });
   };
 };
