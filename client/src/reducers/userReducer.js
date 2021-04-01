@@ -53,6 +53,32 @@ const userReducer = (state = initialState, action) => {
         ...state,
         profileToView: { ...state.profileToView, following: action.payload },
       };
+    case "HOME_POSTS":
+      return {
+        ...state,
+        homePosts: action.payload,
+        homePostsLoaded: true,
+        homePostsError: "",
+      };
+    case "HOME_POSTS_ERROR":
+      return {
+        ...state,
+        homePostsError: action.payload,
+        homePostsLoaded: true,
+      };
+    case "SUGGESTIONS":
+      return {
+        ...state,
+        suggestions: action.payload,
+        suggestionsLoaded: true,
+        suggestionsError: "",
+      };
+    case "SUGGESTIONS_ERROR":
+      return {
+        ...state,
+        suggestionsError: action.payload,
+        suggestionsLoaded: true,
+      };
     default:
       return state;
   }
@@ -101,6 +127,42 @@ export const editProfileToView = (newFollowing) => {
     dispatch({
       type: "EDIT_PROFILE_TO_VIEW",
       payload: newFollowing,
+    });
+  };
+};
+
+export const initHomePosts = (username, config) => {
+  return async (dispatch) => {
+    const home = await usersService.getUserHomePosts(username, config);
+
+    if (home.error) {
+      return dispatch({
+        type: "HOME_POSTS_ERROR",
+        payload: home.error,
+      });
+    }
+
+    dispatch({
+      type: "HOME_POSTS",
+      payload: home.posts,
+    });
+  };
+};
+
+export const initSuggestions = (username, config) => {
+  return async (dispatch) => {
+    const profiles = await usersService.getUserSuggestions(username, config);
+
+    if (profiles.error) {
+      return dispatch({
+        type: "SUGGESTIONS_ERROR",
+        payload: profiles.error,
+      });
+    }
+
+    dispatch({
+      type: "SUGGESTIONS",
+      payload: profiles.suggestions,
     });
   };
 };
