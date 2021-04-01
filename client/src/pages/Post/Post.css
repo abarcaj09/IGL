@@ -1,0 +1,29 @@
+.post {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 935px;
+  flex: 1;
+  outline: 1px solid #ff0000;
+}
+
+.post-userPreviews {
+  padding-top: 60px;
+  border-top: 1px solid #808080;
+  position: relative;
+  top: 40px;
+  width: 100vw;
+  max-width: 935px;
+}
+
+.post-userPreviews > p {
+  margin-left: 10px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #808080;
+}
+
+.post-userPreviews a {
+  font-weight: 600;
+}
