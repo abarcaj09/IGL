@@ -5,7 +5,7 @@ import { logout } from "../../reducers/authReducer";
 import { clearSuccess } from "../../reducers/postsReducer";
 import { initHomePosts, initSuggestions } from "../../reducers/userReducer";
 import ProfileRow from "../../components/ProfileRow";
-// import PostCard from "./PostCard";
+import PostCard from "./PostCard";
 import FollowButton from "../../components/FollowButton";
 
 const Home = () => {
@@ -44,9 +44,10 @@ const Home = () => {
   return (
     <div className="home">
       <div className="home-posts">
-        <h1>User created post will go here </h1>
         {post && (
-          <div className="home-post">{/* <PostCard {...post} /> */}</div>
+          <div className="home-post">
+            <PostCard {...post} />
+          </div>
         )}
 
         {user.homePostsError ? (
@@ -60,8 +61,7 @@ const Home = () => {
               user.homePosts.map((post) => {
                 return (
                   <div key={post.id} className="home-post">
-                    {/* <PostCard {...post} /> */}
-                    <h1>Home Posts will go here</h1>
+                    <PostCard {...post} />
                   </div>
                 );
               })
@@ -71,7 +71,7 @@ const Home = () => {
       </div>
 
       <div className="home-suggestions">
-        <ProfileRow profile={user} largePic>
+        <ProfileRow {...user} largePic>
           <button onClick={() => dispatch(logout())}>Log Out</button>
         </ProfileRow>
 
@@ -88,7 +88,7 @@ const Home = () => {
               <p>Suggestions for you</p>
             )}
             {user.suggestions.map((profile) => (
-              <ProfileRow key={profile.id} profile={profile}>
+              <ProfileRow key={profile.id} {...profile}>
                 <FollowButton {...profile} />
               </ProfileRow>
             ))}
