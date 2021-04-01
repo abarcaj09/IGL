@@ -38,12 +38,13 @@ const AddComment = ({
     if (createdComment.error) {
       setCommentError(true);
     } else {
+      const commentObj = createdComment.comment;
       setPostComments([
         {
           user: { username, profilePic, id },
-          comment: createdComment.comment,
-          id: createdComment.id,
-          createdAt: createdComment.createdAt,
+          comment: commentObj.comment,
+          id: commentObj.id,
+          createdAt: commentObj.createdAt,
         },
         ...postComments,
       ]);

@@ -1,4 +1,4 @@
-import "./PagePost.css";
+import "./PostView.css";
 import React, { useState, useEffect } from "react";
 import { formatDistanceStrict } from "date-fns";
 import Slides from "../../components/Slides";

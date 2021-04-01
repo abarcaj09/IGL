@@ -1,6 +1,6 @@
 import "./Post.css";
 import React, { useEffect } from "react";
-// import PostView from "./PostView";  // uncomment when implemented
+import PostView from "./PostView";
 import PostPreviews from "../../components/PostPreviews";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -40,9 +40,7 @@ const Post = () => {
     <div>
       {postToView && postToView.id === postId ? ( // if postToView.id !== postId then don't render yet because it is the previous postToView
         <div className="post">
-          {/* uncomment  when implemented */}
-          {/* <PostView {...postToView} /> */}
-          <h1>Post will go here</h1>
+          <PostView {...postToView} />
 
           {/* if post creator has more post besides this one  (user.posts.length > 1) then render this */}
           {userPreviewsLoaded && userPreviewsError ? (

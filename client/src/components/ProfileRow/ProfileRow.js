@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 const ProfileRow = ({
   username,
   profilePic,
-  username,
   name,
   largePic,
   children,
@@ -21,6 +20,7 @@ const ProfileRow = ({
         <Link to={profilePage} onClick={close}>
           <Avatar src={profilePic} alt={`${username}`} />
         </Link>
+
         <div className="profileRow-names">
           <h3>
             <Link to={profilePage} onClick={close}>

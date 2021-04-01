@@ -28,7 +28,7 @@ const FollowButton = ({
     } else {
       setFollows(false);
     }
-  }, [user.following]);
+  }, [user.following, id]);
 
   const follow = () => {
     setFollows(true);

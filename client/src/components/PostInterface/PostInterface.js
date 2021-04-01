@@ -33,7 +33,7 @@ const PostInterface = ({ postId, postLikes, setPostLikes, children }) => {
     } else {
       setIsLiked(false);
     }
-  }, [userLikes]);
+  }, [userLikes, postId]);
 
   useEffect(() => {
     if (userSaved.includes(postId)) {
@@ -41,7 +41,7 @@ const PostInterface = ({ postId, postLikes, setPostLikes, children }) => {
     } else {
       setIsSaved(false);
     }
-  }, [userSaved]);
+  }, [userSaved, postId]);
 
   // action will be a function such as like/unlike
   // interacting with post is only allowed if user is signed in

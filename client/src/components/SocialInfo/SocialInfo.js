@@ -8,9 +8,11 @@ const SocialInfo = ({ count, relation, profiles }) => {
   const [relationText, setRelationText] = useState(relation);
 
   //   change relation from plural if count is 1
-  if (count === 1 && (relation === "likes" || relation === "followers")) {
-    setRelationText(relation.slice(0, relation.length - 1));
-  }
+  useEffect(() => {
+    if (count === 1 && (relation === "likes" || relation === "followers")) {
+      setRelationText(relation.slice(0, relation.length - 1));
+    }
+  }, [count, relation]);
 
   useEffect(() => {
     if (profiles.length === 0) {
