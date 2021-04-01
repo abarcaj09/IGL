@@ -71,6 +71,8 @@ const postsReducer = (state = initialState, action) => {
       return { ...state, userSaved: action.payload };
     case "SAVE_POST_ERROR":
       return state;
+    case "CLEAR_SUCCESS":
+      return { ...state, creationSuccess: action.payload };
     default:
       return state;
   }
@@ -196,6 +198,13 @@ export const savePost = (id, config) => {
       type: "SAVE_POST",
       payload: self.userSaved,
     });
+  };
+};
+
+export const clearSuccess = () => {
+  return {
+    type: "CLEAR_SUCCESS",
+    payload: false,
   };
 };
 
