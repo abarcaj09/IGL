@@ -25,7 +25,31 @@ const followUser = async (username, config) => {
   }
 };
 
+const getUserHomePosts = async (username, config) => {
+  try {
+    const response = await axios.get(`${baseUrl}/${username}/home`, config);
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
+const getUserSuggestions = async (username, config) => {
+  try {
+    const response = await axios.get(
+      `${baseUrl}/${username}/suggestions`,
+      config
+    );
+
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
 export default {
   getUser,
   followUser,
+  getUserHomePosts,
+  getUserSuggestions,
 };
