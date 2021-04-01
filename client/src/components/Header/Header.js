@@ -1,6 +1,6 @@
 import "./Header.css";
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from "@material-ui/icons/Home";
 import ExploreIcon from "@material-ui/icons/Explore";
@@ -20,8 +20,13 @@ import { logout } from "../../reducers/authReducer";
 const Header = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const history = useHistory();
+
   const user = useSelector(({ user }) => {
     return user;
+  });
+  const auth = useSelector(({ auth }) => {
+    return auth;
   });
 
   const [searchInput, setSearchInput] = useState("");
@@ -50,6 +55,19 @@ const Header = () => {
     setShowResults(false);
     setResults([]);
   }, [location.pathname]);
+
+  const open = () => {
+    if (auth && auth.user) {
+      setIsOpen(true);
+    }
+  };
+
+  // redirect to login page. Necessary when url = /p/:id else the
+  // page will stay the same
+  const logoutAndRedirect = () => {
+    dispatch(logout());
+    history.push("/accounts/login");
+  };
 
   return (
     <div className="header">
@@ -130,7 +148,7 @@ const Header = () => {
               }`}
               src={user.profilePic}
               alt={user.name}
-              onClick={() => setIsOpen(true)}
+              onClick={open}
             />
 
             {isOpen && (
@@ -165,7 +183,7 @@ const Header = () => {
 
                   <hr />
 
-                  <h4 onClick={() => dispatch(logout())}>Log Out</h4>
+                  <h4 onClick={logoutAndRedirect}>Log Out</h4>
                 </div>
               </OutsideClickHandler>
             )}
