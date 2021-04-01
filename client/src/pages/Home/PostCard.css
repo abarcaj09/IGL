@@ -1,0 +1,46 @@
+.postCard {
+  width: 100%;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  background-color: #fff;
+  position: relative;
+}
+
+.postCard-images {
+  height: 767px;
+  margin-bottom: 4px;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.postCard-below {
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
+.postCard-below > hr {
+  border-top: 1px solid #efeff4;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.postCard-likes {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.postCard-caption,
+.postCard-comments,
+.postCard-comment,
+.postCard-timestamp {
+  margin-bottom: 10px;
+}
+.postCard-commentError {
+  color: #ff0000;
+}
+
+.postCard-addComment {
+  height: 70px;
+}
