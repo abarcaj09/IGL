@@ -9,6 +9,8 @@ const initialState = {
   biography: "",
   followers: [],
   following: [],
+  success: false,
+  error: "",
 
   homePosts: [], // when url = /
   homePostsLoaded: false,
@@ -23,8 +25,6 @@ const initialState = {
   explorePostsError: "",
 
   profileToView: null, // when url = /:username
-  success: false,
-  error: "",
 };
 
 const userReducer = (state = initialState, action) => {
@@ -81,6 +81,12 @@ const userReducer = (state = initialState, action) => {
       };
     case "PROFILE_TO_VIEW":
       return { ...state, profileToView: action.payload };
+    case "EDIT_USER_PROFILE":
+      return { ...state, ...action.payload, error: "", success: true };
+    case "CLEAR_USER_ERROR":
+      return { ...state, error: action.payload };
+    case "CLEAR_USER_SUCCESS":
+      return { ...state, success: action.payload };
     default:
       return state;
   }
@@ -177,6 +183,54 @@ export const initProfile = (username, config) => {
       type: "PROFILE_TO_VIEW",
       payload: userProfile,
     });
+  };
+};
+
+export const editUser = (profilePic, name, biography, username, config) => {
+  return async (dispatch) => {
+    // only upload image if its different from the current profile picture
+    const imageUrl = profilePic
+      ? await usersService.uploadImage(profilePic, config)
+      : { url: "" };
+
+    if (imageUrl.error) {
+      return dispatch({
+        type: "SET_USER_ERROR",
+        payload: imageUrl.error,
+      });
+    }
+    const edits = { profilePic: imageUrl.url, name, biography };
+    const editedUser = await usersService.updateUserProfile(
+      username,
+      edits,
+      config
+    );
+
+    if (editedUser.error) {
+      return dispatch({
+        type: "SET_USER_ERROR",
+        payload: editedUser.error,
+      });
+    }
+
+    dispatch({
+      type: "EDIT_USER_PROFILE",
+      payload: editedUser,
+    });
+  };
+};
+
+export const clearSuccess = () => {
+  return {
+    type: "CLEAR_USER_SUCCESS",
+    payload: false,
+  };
+};
+
+export const clearError = () => {
+  return {
+    type: "CLEAR_USER_ERROR",
+    payload: "",
   };
 };
 
