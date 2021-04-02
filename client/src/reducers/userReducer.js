@@ -87,6 +87,20 @@ const userReducer = (state = initialState, action) => {
       return { ...state, error: action.payload };
     case "CLEAR_USER_SUCCESS":
       return { ...state, success: action.payload };
+
+    case "EXPLORE_POSTS":
+      return {
+        ...state,
+        explorePosts: action.payload,
+        explorePostsLoaded: true,
+        explorePostsError: "",
+      };
+    case "EXPLORE_POSTS_ERROR":
+      return {
+        ...state,
+        explorePostsError: action.payload,
+        explorePostsLoaded: true,
+      };
     default:
       return state;
   }
@@ -231,6 +245,24 @@ export const clearError = () => {
   return {
     type: "CLEAR_USER_ERROR",
     payload: "",
+  };
+};
+
+export const initExplorePosts = (username, config) => {
+  return async (dispatch) => {
+    const explorePosts = await usersService.getExplorePosts(username, config);
+
+    if (explorePosts.error) {
+      return dispatch({
+        type: "EXPLORE_POSTS_ERROR",
+        payload: explorePosts.error,
+      });
+    }
+
+    dispatch({
+      type: "EXPLORE_POSTS",
+      payload: explorePosts.posts,
+    });
   };
 };
 
