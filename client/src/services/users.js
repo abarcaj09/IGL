@@ -47,9 +47,34 @@ const getUserSuggestions = async (username, config) => {
   }
 };
 
+const uploadImage = async (profilePic, config) => {
+  try {
+    const response = await axios.post(
+      `${baseUrl}/images`,
+      { image: profilePic },
+      config
+    );
+
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
+const updateUserProfile = async (username, edits, config) => {
+  try {
+    const response = await axios.put(`${baseUrl}/${username}`, edits, config);
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
 export default {
   getUser,
   followUser,
   getUserHomePosts,
   getUserSuggestions,
+  uploadImage,
+  updateUserProfile,
 };
