@@ -70,6 +70,16 @@ const updateUserProfile = async (username, edits, config) => {
   }
 };
 
+const getExplorePosts = async (username, config) => {
+  try {
+    const response = await axios.get(`${baseUrl}/${username}/explore`, config);
+
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
 export default {
   getUser,
   followUser,
@@ -77,4 +87,5 @@ export default {
   getUserSuggestions,
   uploadImage,
   updateUserProfile,
+  getExplorePosts,
 };
