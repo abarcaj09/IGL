@@ -174,7 +174,7 @@ export const initProfile = (username, config) => {
     const userProfile = await usersService.getUser(username, config);
 
     dispatch({
-      type: "ProfileToView",
+      type: "PROFILE_TO_VIEW",
       payload: userProfile,
     });
   };
