@@ -109,7 +109,7 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          {/* ? Create NavItem component for "posts" & "saved" => can also be used in drop down menu */}
+
           <div className="profile-userContent">
             <Link to={`/${profileName}`} replace>
               <div

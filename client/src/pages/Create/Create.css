@@ -1,6 +1,6 @@
 .create {
   position: relative;
-  margin-top: 70px;
+  margin-top: 40px;
   border: 1px solid #d3d3d3;
   height: calc(100vh - 140px);
   width: 100%;
@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ffff;
+  background-color: #ffffff;
 }
 
 .create > p {
@@ -57,7 +57,7 @@
   height: 35px;
   border-radius: 4px;
   background-color: #007aff;
-  color: #ffff;
+  color: #ffffff;
   font-size: 16px;
 }
 

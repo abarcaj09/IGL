@@ -6,7 +6,7 @@
 
 a {
   text-decoration: none;
-  color: black;
+  color: #000000;
 }
 
 .auth {
@@ -17,7 +17,7 @@ a {
 }
 .auth-logoContainer {
   height: 70px;
-  background-color: #ffff;
+  background-color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,7 +55,7 @@ a {
 .auth-button {
   width: 100%;
   background-color: #007aff;
-  color: #ffff;
+  color: #ffffff;
   height: 30px;
 }
 
@@ -69,7 +69,7 @@ a {
 
 .auth-bottom {
   margin-top: 20px;
-  background-color: #ffff;
+  background-color: #ffffff;
   height: 70px;
   display: flex;
   justify-content: center;

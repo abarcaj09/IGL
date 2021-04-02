@@ -1,0 +1,164 @@
+.editProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  height: calc(100vh - 140px);
+  background-color: #ffffff;
+  outline: 1px solid #d3d3d3;
+  max-width: 700px;
+  margin-top: 40px;
+  flex: 1;
+}
+
+.editProfile-photo {
+  margin: 20px 0px 30px;
+  display: flex;
+  width: 90%;
+  align-items: center;
+}
+
+.editProfile-photo > .MuiAvatar-root {
+  height: 150px;
+  width: 150px;
+  margin-right: 20px;
+}
+
+.editProfile-photoRight > h1 {
+  margin-bottom: 5px;
+}
+
+.editProfile-photoRight > button {
+  color: #007aff;
+  border: none;
+  background-color: inherit;
+  font-size: 16px;
+  text-align-last: left;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.editProfile-photoRight > input {
+  display: none;
+}
+
+.editProfile-form {
+  width: 90%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.editProfile-formRow {
+  display: flex;
+  align-items: center;
+  max-height: 120px;
+}
+
+.editProfile-formRow > label {
+  width: 100px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.editProfile-formRow > input {
+  width: 45%;
+  height: 22px;
+}
+
+.editProfile-formRow > textarea {
+  width: 45%;
+  resize: none;
+  min-height: 20px;
+  max-height: inherit;
+}
+
+.editProfile-bottom {
+  display: flex;
+  margin-left: 200px;
+  align-items: center;
+  width: fit-content;
+}
+
+.editProfile-bottom > button {
+  color: #ffffff;
+  font-size: 18px;
+  background-color: #007aff;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  height: 35px;
+  width: 80px;
+}
+
+.editProfile-bottom > p {
+  margin-left: 70px;
+  color: #ff0000;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.editProfile-delete {
+  background-color: #ffffff;
+  height: 300px;
+  width: 300px;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.editProfile-confirm {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.editProfile-confirm > button {
+  width: 45%;
+  height: 35px;
+  border-radius: 5px;
+  font-size: 18px;
+  border: none;
+}
+
+.editProfile-confirm > button:hover {
+  cursor: pointer;
+}
+
+.editProfile-cancel {
+  background-color: #007aff;
+  color: #ffffff;
+}
+
+.editProfile-confirmDelete {
+  background-color: #ff0000;
+  color: #ffffff;
+}
+
+.editProfile-error {
+  color: #ff0000;
+  font-size: 18px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+}
+.editProfile-success {
+  font-size: 18px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+}

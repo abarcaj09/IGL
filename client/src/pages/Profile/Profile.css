@@ -2,15 +2,8 @@
   max-width: 935px;
   width: 100vw;
   position: relative;
-  top: 70px;
   height: 100%;
-  padding-top: 30px;
-}
-
-.profile-notFound {
-  position: relative;
-  top: 120px;
-  color: #ff0000;
+  margin-top: 40px;
 }
 
 .profile-header {
@@ -72,7 +65,7 @@
 
 .profile-options > a {
   text-decoration: none;
-  color: black;
+  color: #000000;
 }
 
 .profile-optionsUser > button {
@@ -138,8 +131,8 @@
 }
 
 .selected {
-  border-top: 1px solid #0000;
-  color: #0000;
+  border-top: 1px solid #000000;
+  color: #000000;
 }
 
 .profile-userContentOption > .MuiSvgIcon-root {
