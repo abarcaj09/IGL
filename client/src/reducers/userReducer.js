@@ -25,6 +25,7 @@ const initialState = {
   explorePostsError: "",
 
   profileToView: null, // when url = /:username
+  ptvLoading: false,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -80,7 +81,9 @@ const userReducer = (state = initialState, action) => {
         suggestionsLoaded: true,
       };
     case "PROFILE_TO_VIEW":
-      return { ...state, profileToView: action.payload };
+      return { ...state, profileToView: action.payload, ptvLoading: false };
+    case "PROFILE_TO_VIEW_LOADING":
+      return { ...state, ptvLoading: action.payload };
     case "EDIT_USER_PROFILE":
       return { ...state, ...action.payload, error: "", success: true };
     case "CLEAR_USER_ERROR":
@@ -204,6 +207,13 @@ export const initProfile = (username, config) => {
       type: "PROFILE_TO_VIEW",
       payload: userProfile,
     });
+  };
+};
+
+export const setPtvLoading = () => {
+  return {
+    type: "PROFILE_TO_VIEW_LOADING",
+    payload: true,
   };
 };
 

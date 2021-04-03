@@ -5,7 +5,7 @@ import { Avatar } from "@material-ui/core";
 import GridOnIcon from "@material-ui/icons/GridOn";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import { useDispatch, useSelector } from "react-redux";
-import { initProfile } from "../../reducers/userReducer";
+import { initProfile, setPtvLoading } from "../../reducers/userReducer";
 import SocialInfo from "../../components/SocialInfo";
 import NoMatch from "../../components/NoMatch";
 import FollowButton from "../../components/FollowButton";
@@ -17,9 +17,11 @@ const Profile = () => {
   const profileName = location.pathname.split("/")[1]; // the profile's username
   const isSavedPage = location.pathname.split("/")[2] === "saved";
 
-  const { profileToView, username, following } = useSelector(({ user }) => {
-    return user;
-  });
+  const { profileToView, username, following, ptvLoading } = useSelector(
+    ({ user }) => {
+      return user;
+    }
+  );
 
   const config = useSelector(({ auth }) => {
     return auth.config;
@@ -29,6 +31,7 @@ const Profile = () => {
   const [profileFollowing, setProfileFollowing] = useState([]);
 
   useEffect(() => {
+    dispatch(setPtvLoading());
     dispatch(initProfile(profileName, config));
   }, [dispatch, profileName, config]);
 
@@ -50,7 +53,9 @@ const Profile = () => {
 
   return (
     <div>
-      {profileToView && profileToView.username === profileName ? (
+      {!ptvLoading &&
+      profileToView &&
+      profileToView.username === profileName ? (
         <div className="profile">
           <div className="profile-header">
             <div className="profile-picture">
