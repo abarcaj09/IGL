@@ -31,9 +31,9 @@ const Home = () => {
   }, [creationSuccess, dispatch]);
 
   useEffect(() => {
-    dispatch(initHomePosts(user.username, auth.config));
-    dispatch(initSuggestions(user.username, auth.config));
-  }, [dispatch, auth.config, user.username]);
+    dispatch(initHomePosts(auth.user.username, auth.config));
+    dispatch(initSuggestions(auth.user.username, auth.config));
+  }, [dispatch, auth.config, auth.user.username]);
 
   // wait until server has returned something for home posts
   // and suggestions

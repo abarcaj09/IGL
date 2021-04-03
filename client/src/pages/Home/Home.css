@@ -1,11 +1,10 @@
 .home {
   display: flex;
+  justify-content: space-between;
   width: 100%;
   max-width: 935px;
-  justify-content: space-between;
   position: relative;
   margin-top: 40px;
-  padding-top: 30px;
 }
 
 .home-posts {
@@ -14,6 +13,7 @@
   width: 100%;
   max-width: 614px;
   margin-right: 26px;
+  outline: 1px solid green;
 }
 
 .home-posts > p {
@@ -27,11 +27,11 @@
 .home-suggestions {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  /* height: 100vh; */
   width: 100%;
   max-width: 293px;
   position: sticky;
-  top: 100px;
+  outline: 1px solid red;
 }
 
 .home-suggestions > p {

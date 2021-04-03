@@ -34,6 +34,10 @@
   text-decoration: underline;
 }
 
+.comment-text > p {
+  white-space: pre-wrap;
+}
+
 .comment-timestamp {
   display: flex;
   color: #808080;

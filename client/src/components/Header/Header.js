@@ -16,6 +16,7 @@ import searchService from "../../services/search";
 import SearchResult from "./SearchResult";
 import useDebounce from "./useDebounce";
 import { logout } from "../../reducers/authReducer";
+import { clearSuccess, clearError } from "../../reducers/userReducer";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -54,7 +55,9 @@ const Header = () => {
     setSearchInput("");
     setShowResults(false);
     setResults([]);
-  }, [location.pathname]);
+    dispatch(clearSuccess());
+    dispatch(clearError());
+  }, [location.pathname, dispatch]);
 
   const open = () => {
     if (auth && auth.user) {

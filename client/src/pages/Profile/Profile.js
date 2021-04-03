@@ -17,7 +17,7 @@ const Profile = () => {
   const profileName = location.pathname.split("/")[1]; // the profile's username
   const isSavedPage = location.pathname.split("/")[2] === "saved";
 
-  const { profileToView, username } = useSelector(({ user }) => {
+  const { profileToView, username, following } = useSelector(({ user }) => {
     return user;
   });
 
@@ -27,7 +27,6 @@ const Profile = () => {
 
   const [profileFollowers, setProfileFollowers] = useState([]);
   const [profileFollowing, setProfileFollowing] = useState([]);
-  const [profile, setProfile] = useState(null);
 
   useEffect(() => {
     dispatch(initProfile(profileName, config));
@@ -35,9 +34,8 @@ const Profile = () => {
 
   useEffect(() => {
     if (profileToView && !profileToView.error) {
-      setProfileFollowers(profileToView.profile.followers);
-      setProfileFollowing(profileToView.profile.following);
-      setProfile(profileToView.profile);
+      setProfileFollowers(profileToView.followers);
+      setProfileFollowing(profileToView.following);
     }
   }, [profileToView]);
 
@@ -52,24 +50,30 @@ const Profile = () => {
 
   return (
     <div>
-      {profile && profile.username === profileName ? (
+      {profileToView && profileToView.username === profileName ? (
         <div className="profile">
           <div className="profile-header">
             <div className="profile-picture">
-              <Avatar src={profile.profilePic} alt={profile.name} />
+              <Avatar src={profileToView.profilePic} alt={profileToView.name} />
             </div>
 
             <div className="profile-overview">
               <div className="profile-overviewTop">
-                <h2>{profile.username}</h2>
+                <h2>{profileToView.username}</h2>
                 {username === profileName ? (
                   <div className="profile-options">
                     <Link to="/accounts/edit">Edit Profile</Link>
                   </div>
                 ) : (
-                  <div className="profile-optionsUser">
+                  <div
+                    className={`profile-followButton ${
+                      following.includes(profileToView.id)
+                        ? "profile-followed"
+                        : "profile-notFollowed"
+                    }`}
+                  >
                     <FollowButton
-                      {...profile}
+                      {...profileToView}
                       followers={profileFollowers}
                       setFollowers={setProfileFollowers}
                     />
@@ -78,8 +82,8 @@ const Profile = () => {
               </div>
               <div className="profile-overviewCenter">
                 <p>
-                  <span>{profile.posts.length}</span>{" "}
-                  {profile.posts.length === 1 ? "post" : "posts"}
+                  <span>{profileToView.posts.length}</span>{" "}
+                  {profileToView.posts.length === 1 ? "post" : "posts"}
                 </p>
 
                 <div className="profile-socialLabel">
@@ -100,11 +104,11 @@ const Profile = () => {
               </div>
 
               <div className="profile-overviewBottom">
-                <h1>{profile.name}</h1>
+                <h1>{profileToView.name}</h1>
                 <p>
-                  {!profile.biography && username === profileName
+                  {!profileToView.biography && username === profileName
                     ? "Edit your profile to add a biography"
-                    : profile.biography}
+                    : profileToView.biography}
                 </p>
               </div>
             </div>
@@ -139,13 +143,13 @@ const Profile = () => {
 
           {isSavedPage ? (
             <PostPreviews
-              posts={profile.saved}
+              posts={profileToView.saved}
               fallbackText="Posts you save will appear here."
             />
           ) : (
-            profile.posts && (
+            profileToView.posts && (
               <PostPreviews
-                posts={profile.posts}
+                posts={profileToView.posts}
                 fallbackText={
                   username === profileName
                     ? "Posts you create will appear here."

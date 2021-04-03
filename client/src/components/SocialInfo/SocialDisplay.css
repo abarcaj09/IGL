@@ -6,7 +6,7 @@
   overflow-y: auto;
   border: 1px solid #d3d3d3;
   border-radius: 8px;
-  background-color: #ffff;
+  background-color: #ffffff;
   position: relative;
 }
 
@@ -21,7 +21,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: #ffff;
+  background-color: #ffffff;
 }
 
 .socialDisplay-header > h1 {
@@ -32,7 +32,7 @@
 .socialDisplay-header > button {
   font-size: 24px;
   border: 0;
-  background-color: #ffff;
+  background-color: #ffffff;
   font-weight: 300;
 }
 
@@ -42,4 +42,31 @@
 
 .socialDisplay-body {
   padding: 0px 12px;
+}
+
+.socialDisplay-button > button:hover {
+  cursor: pointer;
+}
+
+.socialDisplay-button > button {
+  border-radius: 4px;
+  width: 80px;
+  height: 28px;
+  font-size: 14px;
+}
+
+.profile-followButton > button:hover {
+  cursor: pointer;
+}
+
+.socialDisplay-followed > button {
+  color: #000000;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+}
+
+.socialDisplay-notFollowed > button {
+  color: #ffffff;
+  background-color: #007aff;
+  border: none;
 }

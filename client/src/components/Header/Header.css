@@ -1,11 +1,11 @@
 .header {
-  width: 100%;
+  width: 100vw;
   display: flex;
   border-bottom: 1px solid #ceced2;
   height: 70px;
   position: fixed;
   top: 0;
-  background-color: #ffff;
+  background-color: #ffffff;
   z-index: 100;
   justify-content: center;
 }
@@ -55,7 +55,7 @@
   border-radius: 8px;
   max-height: 360px;
   width: inherit;
-  background-color: #ffff;
+  background-color: #ffffff;
   overflow-y: auto;
 }
 
@@ -111,7 +111,7 @@
   height: 160px;
   max-width: 230px;
   width: 100%;
-  background-color: #ffff;
+  background-color: #ffffff;
 }
 
 .header-dropDownMenu > h4 {

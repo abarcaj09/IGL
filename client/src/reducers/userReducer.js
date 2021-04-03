@@ -193,6 +193,14 @@ export const initProfile = (username, config) => {
   return async (dispatch) => {
     const userProfile = await usersService.getUser(username, config);
 
+    if (userProfile.profile) {
+      return dispatch({
+        type: "PROFILE_TO_VIEW",
+        payload: userProfile.profile,
+      });
+    }
+
+    // object will contain error property that will be checked in the requesting page
     dispatch({
       type: "PROFILE_TO_VIEW",
       payload: userProfile,
