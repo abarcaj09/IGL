@@ -75,9 +75,8 @@ const PostCard = ({
         <div className="postCard-comments">
           {postComments.slice(0, 2).map((comment) => {
             return (
-              <div className="postCard-comment">
+              <div key={comment.id} className="postCard-comment">
                 <Comment
-                  key={comment.id}
                   username={comment.user.username}
                   comment={comment.comment}
                   id={comment.id}

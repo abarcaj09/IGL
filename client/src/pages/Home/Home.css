@@ -13,7 +13,6 @@
   width: 100%;
   max-width: 614px;
   margin-right: 26px;
-  outline: 1px solid green;
 }
 
 .home-posts > p {
@@ -27,11 +26,11 @@
 .home-suggestions {
   display: flex;
   flex-direction: column;
-  /* height: 100vh; */
+  height: calc(100vh - 110px);
   width: 100%;
   max-width: 293px;
   position: sticky;
-  outline: 1px solid red;
+  top: 110px;
 }
 
 .home-suggestions > p {
