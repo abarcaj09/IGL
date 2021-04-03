@@ -95,6 +95,9 @@ const Home = () => {
             ))}
           </>
         )}
+        <p className="disclaimer">
+          *This website is for demonstration purposes only.
+        </p>
       </div>
     </div>
   );

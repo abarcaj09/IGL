@@ -39,7 +39,6 @@ const PostView = ({
       <div className="postView-right">
         <div className="postView-header">
           <PostHeader
-            home
             profilePic={user.profilePic}
             username={user.username}
             postId={id}

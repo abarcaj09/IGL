@@ -20,4 +20,6 @@ const deleteComment = async (id, config) => {
   }
 };
 
-export default { newComment, deleteComment };
+const commentService = { newComment, deleteComment };
+
+export default commentService;

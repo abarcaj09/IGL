@@ -66,7 +66,7 @@ const savePost = async (id, config) => {
   }
 };
 
-export default {
+const postsService = {
   uploadImages,
   newPost,
   getPost,
@@ -75,3 +75,5 @@ export default {
   likePost,
   savePost,
 };
+
+export default postsService;

@@ -20,4 +20,6 @@ const login = async (userCredentials) => {
   }
 };
 
-export default { register, login };
+const authService = { register, login };
+
+export default authService;

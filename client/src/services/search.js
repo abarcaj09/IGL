@@ -8,11 +8,12 @@ const searchUsers = async (searchInput) => {
     const response = await axios.get(
       `${baseUrl}/users?name=${searchInput}&username=${searchInput}`
     );
-
     return response.data.results;
   } catch (error) {
     return [];
   }
 };
 
-export default { searchUsers };
+const searchService = { searchUsers };
+
+export default searchService;

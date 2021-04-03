@@ -79,7 +79,7 @@ const getExplorePosts = async (username, config) => {
   }
 };
 
-export default {
+const userService = {
   getUser,
   followUser,
   getUserHomePosts,
@@ -88,3 +88,5 @@ export default {
   updateUserProfile,
   getExplorePosts,
 };
+
+export default userService;

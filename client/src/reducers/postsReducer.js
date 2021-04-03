@@ -17,7 +17,6 @@ const initialState = {
   userPosts: [],
 };
 
-// setLikes, setSaved, deletePost
 const postsReducer = (state = initialState, action) => {
   switch (action.type) {
     // from user reducer
