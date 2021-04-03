@@ -25,10 +25,7 @@ const SocialDisplay = ({ title, profiles, onClose }) => {
                   : "socialDisplay-notFollowed"
               }`}
             >
-              <FollowButton
-                className="socialDisplay-followButton"
-                {...profile}
-              />
+              <FollowButton {...profile} />
             </div>
           </ProfileRow>
         ))}

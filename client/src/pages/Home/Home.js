@@ -31,6 +31,7 @@ const Home = () => {
   }, [creationSuccess, dispatch]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(initHomePosts(auth.user.username, auth.config));
     dispatch(initSuggestions(auth.user.username, auth.config));
   }, [dispatch, auth.config, auth.user.username]);

@@ -55,10 +55,6 @@
   font-size: 14px;
 }
 
-.profile-followButton > button:hover {
-  cursor: pointer;
-}
-
 .socialDisplay-followed > button {
   color: #000000;
   background-color: #ffffff;

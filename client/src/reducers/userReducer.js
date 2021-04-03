@@ -87,7 +87,6 @@ const userReducer = (state = initialState, action) => {
       return { ...state, error: action.payload };
     case "CLEAR_USER_SUCCESS":
       return { ...state, success: action.payload };
-
     case "EXPLORE_POSTS":
       return {
         ...state,
