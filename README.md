@@ -24,7 +24,7 @@ $ git clone https://github.com/abarcaj09/IGL.git
 2. Navigate to client directory
 
 ```sh
-$ cd IGL/client
+$ cd igl/client
 ```
 
 3. Install dependencies
